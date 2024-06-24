@@ -1,0 +1,79 @@
+<br>
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="75">
+        <mat-toolbar color="primary">Sign Up</mat-toolbar>
+        <form #signUpForm="ngForm" (ngSubmit)="saveDetail(signUpForm)">
+            <div class="panel panel-primary">
+                <div class="panel-body" class="login-form">
+
+                    <div class="form-group" [class.has-error]="fullNameControl.invalid && fullNameControl.touched">
+                        <label for="fullName" class="control-label">Full Name</label>
+                        <input id="fullName" required type="text" class="form-control" name="fullName"
+                            [(ngModel)]="fullName" #fullNameControl="ngModel">
+                        <span class="help-block" *ngIf="fullNameControl.invalid && fullNameControl.touched">
+                            Full Name is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" [class.has-error]="emailContorl.invalid && emailContorl.touched">
+                        <label for="email" class="control-label">Email</label>
+                        <input id="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                            class="form-control" name="email" [(ngModel)]="email" #emailContorl="ngModel">
+                        <span class="help-block" *ngIf="emailContorl.errors?.required && emailContorl.touched">
+                            Email is required
+                        </span>
+                        <span class="help-block" *ngIf="emailContorl.errors?.pattern  && emailContorl.touched">
+                            Email is Invalid
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="form-control">
+                            <label class="radio-inline">
+                                <input required type="radio" name="gender" value="male" [(ngModel)]="gender">
+                                Male
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="gender" value="female" [(ngModel)]="gender">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" [class.has-error]="passwordControl.touched && passwordControl.invalid">
+                        <label for="password" class="control-label">Password</label>
+                        <input id="password" required type="text" class="form-control"
+                            (input)="confirmPasswordControl.control.updateValueAndValidity()" name="password"
+                            [(ngModel)]="password" #passwordControl="ngModel">
+                        <span class="help-block" *ngIf="passwordControl.touched && passwordControl.errors?.required">
+                            Password is required
+                        </span>
+                    </div>
+
+                    <div class="form-group"
+                        [class.has-error]="confirmPasswordControl.touched && confirmPasswordControl.invalid">
+                        <label for="confirmPassword" class="control-label">Confirm Password</label>
+                        <input name="confirmPassword" appConfirmEqualValidator="password" required id="confirmPassword"
+                            type="text" class="form-control" [(ngModel)]="confirmPassword"
+                            #confirmPasswordControl="ngModel">
+                        <span class="help-block"
+                            *ngIf="confirmPasswordControl.touched && confirmPasswordControl.errors?.required">
+                            Confirm Password is required
+                        </span>
+                        <span class="help-block" *ngIf="confirmPasswordControl.touched && confirmPasswordControl.errors?.notEqual &&
+            !confirmPasswordControl.errors?.required">
+                            Password and Confirm Password does not match
+                        </span>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+
+                    <button class="btn btn-primary" type="submit" [disabled]="signUpForm.invalid">Save</button>
+                </div>
+            </div>
+        </form>
+        Angular Generated Form Model : {{signUpForm.value | json}}
+
+    </mat-card>
+</div>

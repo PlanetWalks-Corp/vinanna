@@ -34,7 +34,7 @@ class Fairs {
      this.imageName = imageName;}
 }
 
-class Places{
+export class Place{
 	placeId: number;
 	placeName: string;
 	imageName: string;
@@ -77,12 +77,12 @@ export class City{
 	geoLocation: string;
 	history: string;
 	weatherCondition: string;
-	places: Places[];
+	places: Place[];
 	person: Person[];
 	fair: Fairs[];
 	album: Album;
 
-	constructor(cityId: number, cityName: string, population: number, geoLocation: string, history: string, weatherCondition: string, places: Places[], person: Person[], fair: Fairs[],album: Album){
+	constructor(cityId: number, cityName: string, population: number, geoLocation: string, history: string, weatherCondition: string, places: Place[], person: Person[], fair: Fairs[],album: Album){
 	this.cityId = cityId;
 	this.cityName = cityName;
 	this.population = population;

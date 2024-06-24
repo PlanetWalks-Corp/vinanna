@@ -1,0 +1,38 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="35%">
+      <mat-toolbar color="primary">Login Page</mat-toolbar>
+      <br>
+      <form class="form-horizontal" [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()">
+        <div class="example-container" fxLayoutAlign="center center">
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="abc@example.com" formControlName="email" required (blur)="logValidationErrors()">
+            <mat-error *ngIf="formErrors.email"> {{formErrors.email}}</mat-error>
+          </mat-form-field>
+        </div>
+     
+            <div class="example-container" fxLayoutAlign="center center">
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" required (blur)="logValidationErrors()">
+                <button type ="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                <mat-error *ngIf="formErrors.password"> {{formErrors.password}}</mat-error>
+              </mat-form-field>
+            </div> 
+            
+      
+      <div fxLayoutAlign="center">
+        <button mat-button type ="submit">login</button>
+      </div>
+      <div fxLayoutAlign="center">
+
+        <a class="nav-link" href='signUp'>New User? SignUp </a>
+      </div>
+  </form>
+    </mat-card>
+
+</div>

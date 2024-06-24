@@ -1,0 +1,123 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="40%">
+        <mat-toolbar color="primary">Sign Up</mat-toolbar>
+        <br>
+<form class="form-horizontal" [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit()">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      </div>
+      <div class="panel-body">
+
+         <div class="row">
+            <div class="col-lg-6" fxLayoutAlign="center center">
+              <div class="example-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Enter your First Name</mat-label>
+                  <input matInput placeholder="abc" formControlName="firstName" required (blur)="logValidationErrors()">
+                  <mat-error *ngIf="formErrors.firstName"> {{formErrors.firstName}}</mat-error>
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="col-lg-6" fxLayoutAlign="center center">
+          <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your Last Name</mat-label>
+              <input matInput placeholder="abc" formControlName="lastName" required (blur)="logValidationErrors()">
+              <mat-error *ngIf="formErrors.lastName"> {{formErrors.lastName}}</mat-error>
+            </mat-form-field>
+          </div>
+          </div>
+    </div> 
+
+
+    <div class="row">
+      <div class="col-lg-6" fxLayoutAlign="center center">
+        <div class="example-container" fxLayoutAlign="center center">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="abc@example.com" formControlName="email" required (blur)="logValidationErrors()">
+            <mat-error *ngIf="formErrors.email"> {{formErrors.email}}</mat-error>
+          </mat-form-field>
+        </div>
+  </div>
+  <div class="col-lg-6" >
+
+    <div class="example-container" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your Username</mat-label>
+        <input matInput formControlName="userName" required (blur)="logValidationErrors()">
+        <mat-error *ngIf="formErrors.userName"> {{formErrors.userName}}</mat-error>
+      </mat-form-field>
+    </div>
+    </div>
+</div> 
+
+
+
+<!-- 
+ <div class="example-container" fxLayoutAlign="center center">
+  <mat-form-field appearance="fill">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'"  formControlName="confirmPassword" required (blur)="logValidationErrors()">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    <mat-error *ngIf="formErrors.confirmPassword || formErrors.passwordGroup"> {{formErrors.confirmPassword ? formErrors.confirmPassword : formErrors.passwordGroup}}</mat-error>
+  </mat-form-field>
+</div>  -->
+
+
+      
+      <div formGroupName="passwordGroup">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="example-container" fxLayoutAlign="center center">
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" required (blur)="logValidationErrors()">
+                <button type ="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                <mat-error *ngIf="formErrors.password"> {{formErrors.password}}</mat-error>
+              </mat-form-field>
+            </div> 
+            
+            </div>
+            <div class="col-lg-6">
+              <!-- <div class="form-group"  [ngClass]="{'has-error': formErrors.confirmPassword || formErrors.passwordGroup}">
+                <label class="col-sm-2 control-label" for="confirmPassword"></label>
+                <div class="col-sm-8">
+                  <input id="confirmPassword" type="text" class="form-control" formControlName="confirmPassword" placeholder="confirmPassword" (blur)="logValidationErrors()">
+                  <span class="help-block" *ngIf="formErrors.confirmPassword || formErrors.passwordGroup">
+           {{formErrors.confirmPassword ? formErrors.confirmPassword : formErrors.passwordGroup}}
+          </span>
+                </div>
+              </div> -->
+              <div class="example-container" fxLayoutAlign="center center">
+                <mat-form-field appearance="fill">
+                  <mat-label>Confirm Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="confirmPassword" required (blur)="logValidationErrors()">
+                  <button type ="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  <mat-error *ngIf="formErrors.confirmPassword || formErrors.passwordGroup"> {{formErrors.confirmPassword ? formErrors.confirmPassword : formErrors.passwordGroup}}</mat-error>
+                </mat-form-field>
+              </div> 
+              
+              </div>
+    </div>
+  </div>
+  
+      </div>
+      <div class="panel-footer"  fxLayoutAlign="center">
+        <button mat-button type ="submit">Save</button>
+      </div>
+
+      <div fxLayoutAlign="center">
+        <a class="nav-link" href='login'>Existing User? Login </a>
+      </div>
+    </div>
+  </form>
+</mat-card>
+</div>
